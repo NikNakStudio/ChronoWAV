@@ -12,7 +12,6 @@ public class MainCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		var headerPosition = plotter.GetWaveHeader().transform.position;
-		Debug.Log (headerPosition.x);
-		transform.position =  new Vector3(headerPosition.x - 10, 0, -10); 
+		transform.position =  new Vector3(headerPosition.x - 10, 0, -10);
 	}
 }

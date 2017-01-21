@@ -6,6 +6,8 @@ public class LevelController : MonoBehaviour {
     public DimensionController dimensionController;
     public GameObject mainCamera;
     public float verticalLimit;
+    public float secondsToRegenerate = 2;
+
 
     private GameObject tailWaveObject;
     private GameObject headerWaveObject;
@@ -19,7 +21,9 @@ public class LevelController : MonoBehaviour {
     private float frecuency = 1;
     private float motionSpeed = 0;
     private float yFix = 0;
+    private float timeCounter = 0;
     private bool animate = true;
+    private bool needToFixY = false;
 
 	// Use this for initialization
 	void Start () {
@@ -42,6 +46,27 @@ public class LevelController : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
+        int blockedPoints = 0;
+        /*if (timeCounter < secondsToRegenerate)
+        {
+            timeCounter += Time.deltaTime;
+            blockedPoints = (int)(numberOfPoints - (numberOfPoints * timeCounter / secondsToRegenerate));
+            Debug.Log("timeCounter: " + timeCounter);
+            Debug.Log("Puntos bloqueados: " + blockedPoints);
+        }*/
+
+        CheckInput();
+
+		for (int i = 0; i < numberOfPoints; i++)
+		{
+            var isBlocked = i < blockedPoints;
+            var position = CalculateNextPosition(i, isBlocked);
+            plotPoints[i].transform.position = position;
+
+		}
+	}
+
+    private void CheckInput(){
         if (Input.anyKey)
         {
             if(Input.GetKeyDown(KeyCode.Escape)){
@@ -54,27 +79,44 @@ public class LevelController : MonoBehaviour {
         {
             ChangeDimension(DimensionController.dimensions.blue);
         }
-		
-		for (int i = 0; i < numberOfPoints; i++)
-		{
-			float functionXvalue = i * scaleInputRange / numberOfPoints; // scale number from [0 to 99] to [0 to 2Pi]
-			if (animate) {
-				functionXvalue += Time.time * animSpeed;
-			}
-			var x = plotPoints [i].transform.position.x + motionSpeed;
-            var y = yFix + ComputeFunction(functionXvalue) * scaleResult;
-            if (y > verticalLimit)
-                y = verticalLimit;
-            else if (y < -verticalLimit)
-                y = -verticalLimit;
+    }
+
+    private Vector2 CalculateNextPosition(int pointIndex, bool isBlocked){
+        float functionXvalue = pointIndex * scaleInputRange / numberOfPoints; // scale number from [0 to 99] to [0 to 2Pi]
+        if (animate) {
+            functionXvalue += Time.time * animSpeed;
+        }
+
+        if(needToFixY){
+            needToFixY = false;
+            var origin = GetWaveHeader().transform.position.y;
+            var destiny = (ComputeFunction (functionXvalue) * scaleResult);
+            yFix = origin - destiny ;
+        }
             
-			plotPoints [i].transform.position = new Vector2 (x, y);
-		}
-	}
+        var x = plotPoints [pointIndex].transform.position.x + motionSpeed;
+        var y = plotPoints[pointIndex].transform.position.y;
+
+        if (!isBlocked)
+        {
+            y = yFix + ComputeFunction(functionXvalue) * scaleResult;
+            y = CheckYLimit(y);
+        }
+        return new Vector2(x, y);
+    }
+
 	private float ComputeFunction(float x)
 	{
         return Mathf.Sin(frecuency * x);
 	}
+
+    private float CheckYLimit(float y){
+        if (y > verticalLimit)
+            y = verticalLimit;
+        else if (y < -verticalLimit)
+            y = -verticalLimit;
+        return y;
+    }
 
     private void MapDimension(Dimension dimension){
         currentDimension = dimension;
@@ -99,12 +141,11 @@ public class LevelController : MonoBehaviour {
 
         if (currentDimension != nextDimension)
         {
-            var functionXvalue = (numberOfPoints-1) * scaleInputRange / numberOfPoints;
-            yFix = GetWaveHeader().transform.position.y - (ComputeFunction (functionXvalue) * scaleResult);
+            MapDimension(nextDimension);
+            needToFixY = true;
             cameraComponent.backgroundColor = nextDimension.backgroundColor;
-
+            timeCounter = 0;
         }
-        MapDimension(nextDimension);
     }
 
 }

@@ -17,19 +17,63 @@ Platform assembly: C:\Users\JuanHG\Desktop\NikNak2\ChronoWAV\ChronoWAV_Data\Mana
 Loading C:\Users\JuanHG\Desktop\NikNak2\ChronoWAV\ChronoWAV_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\JuanHG\Desktop\NikNak2\ChronoWAV\ChronoWAV_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\JuanHG\Desktop\NikNak2\ChronoWAV\ChronoWAV_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.080 seconds
+- Completed reload, in  0.091 seconds
 Platform assembly: C:\Users\JuanHG\Desktop\NikNak2\ChronoWAV\ChronoWAV_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\JuanHG\Desktop\NikNak2\ChronoWAV\ChronoWAV_Data\Managed\System.dll (this message is harmless)
 desktop: 1280x800 60Hz; virtual: 1280x800 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 3.323782 ms
+UnloadTime: 2.021370 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.526900 ms
+UnloadTime: 0.797909 ms
 
-Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 654.
-Total: 2.630021 ms (FindLiveObjects: 0.082310 ms CreateObjectMapping: 0.032476 ms MarkObjects: 0.175260 ms  DeleteObjects: 2.331015 ms)
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 655.
+Total: 2.180392 ms (FindLiveObjects: 0.087350 ms CreateObjectMapping: 0.034716 ms MarkObjects: 0.170780 ms  DeleteObjects: 1.878026 ms)
+
+DimensionSource (UnityEngine.AudioSource)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+DimensionSource (UnityEngine.AudioSource)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+DimensionSource (UnityEngine.AudioSource)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+DimensionSource (UnityEngine.AudioSource)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+DimensionSource (UnityEngine.AudioSource)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+DimensionSource (UnityEngine.AudioSource)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+DimensionSource (UnityEngine.AudioSource)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+DimensionSource (UnityEngine.AudioSource)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+DimensionSource (UnityEngine.AudioSource)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+DimensionSource (UnityEngine.AudioSource)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+DimensionSource (UnityEngine.AudioSource)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 DimensionSource (UnityEngine.AudioSource)
  
@@ -188,10 +232,16 @@ DimensionSource (UnityEngine.AudioSource)
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.591899 ms
+UnloadTime: 1.647332 ms
 
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 242.
-Total: 3.499602 ms (FindLiveObjects: 0.033036 ms CreateObjectMapping: 0.021837 ms MarkObjects: 0.125425 ms  DeleteObjects: 3.310904 ms)
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 246.
+Total: 3.357938 ms (FindLiveObjects: 0.030236 ms CreateObjectMapping: 0.022957 ms MarkObjects: 0.124305 ms  DeleteObjects: 3.172039 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.918295 ms
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 240.
+Total: 0.624329 ms (FindLiveObjects: 0.061033 ms CreateObjectMapping: 0.226214 ms MarkObjects: 0.189818 ms  DeleteObjects: 0.136064 ms)
 
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 1c1c -> priority: 1 
+  Thread -> id: 1f84 -> priority: 1 

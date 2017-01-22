@@ -12,6 +12,7 @@ public class MainCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         var headerPosition = levelController.GetWaveHeader().transform.position;
+        if(headerPosition.x < 660.3)
 		transform.position =  new Vector3(headerPosition.x + 5, 0, -10);
 	}
 }

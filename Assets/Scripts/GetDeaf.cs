@@ -8,12 +8,12 @@ public class GetDeaf : MonoBehaviour {
     public float deafnessDuration = 2f;
     private float remainingDeafnessTime = 0;
     private AudioSource audioSource;
-    private float originalVolume = 0f;
+	private AudioSource wrongSource;
 
 	// Use this for initialization
 	void Start () {
         audioSource = GameObject.Find("MainSource").GetComponent<AudioSource>();
-        originalVolume = audioSource.volume;
+		wrongSource = GameObject.Find("WrongSource").GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -29,15 +29,22 @@ public class GetDeaf : MonoBehaviour {
             Mute();
     }
 
+    /*void OnTriggerExit(Collider other){
+        if (other.GetType() == typeof(BoxCollider))
+            UnMute();
+    }*/
+
     void Mute(){
         isDeaf = true;
         remainingDeafnessTime = deafnessDuration;
         audioSource.volume = 0;
+		wrongSource.volume = 1;
     }
 
     void UnMute(){
         isDeaf = false;
         remainingDeafnessTime = 0;
-        audioSource.volume = originalVolume;
+        audioSource.volume = 1;
+		wrongSource.volume = 0;
     }
 }

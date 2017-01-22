@@ -148,4 +148,9 @@ public class LevelController : MonoBehaviour {
         }
     }
 
+    public void MuteMusic(){
+        var header = GetWaveHeader();
+        var source = header.GetComponent<AudioSource>();
+        source.volume = 0;
+    }
 }

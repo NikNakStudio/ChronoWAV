@@ -23,6 +23,6 @@ public class Beat : MonoBehaviour {
             gameObject.transform.localScale = new Vector3(scaleFactor, scaleFactor, 1.0F);
         else
             counter = 0;
-        
-	}
+    }
+       	
 }

@@ -25,6 +25,7 @@ public class LevelController : MonoBehaviour {
     private bool animate = true;
     private bool needToFixY = false;
     private AudioSource dimensionSource;
+	private ReachEnd end;
 
 	// Use this for initialization
 	void Start () {
@@ -43,6 +44,7 @@ public class LevelController : MonoBehaviour {
         headerWaveObject.SetActive(false);
         tailWaveObject.SetActive(false);
         dimensionSource = GameObject.Find("DimensionSource").GetComponent<AudioSource>();
+		end = GameObject.Find ("End").GetComponent<ReachEnd> ();
 	}
 
 	// Update is called once per frame
@@ -56,6 +58,10 @@ public class LevelController : MonoBehaviour {
             Debug.Log("timeCounter: " + timeCounter);
             Debug.Log("Puntos bloqueados: " + blockedPoints);
         }*/
+
+		if (end.Ended) {
+			Application.LoadLevel ("Credits");
+		}
 
         CheckInput();
 

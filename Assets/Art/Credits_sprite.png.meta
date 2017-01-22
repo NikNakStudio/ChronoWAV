@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: de60e8e339a9344438e82b496ac103e3
-timeCreated: 1485085309
+guid: 68d82dac7e32d40409097959bea6f455
+timeCreated: 1485088467
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -44,7 +44,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 1
+  spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -78,20 +78,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1911
-        height: 800
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Credits2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 800
+        y: 2400
         width: 1920
         height: 800
       alignment: 0
@@ -100,7 +87,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Credits3
+      name: Credits2
       rect:
         serializedVersion: 2
         x: 0
@@ -113,11 +100,24 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
+      name: Credits3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 1920
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
       name: Credits4
       rect:
         serializedVersion: 2
         x: 0
-        y: 2400
+        y: 0
         width: 1920
         height: 800
       alignment: 0

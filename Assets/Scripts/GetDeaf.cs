@@ -38,7 +38,7 @@ public class GetDeaf : MonoBehaviour {
         isDeaf = true;
         remainingDeafnessTime = deafnessDuration;
         audioSource.volume = 0;
-		wrongSource.volume = 1;
+		wrongSource.volume = 0.2f;
     }
 
     void UnMute(){

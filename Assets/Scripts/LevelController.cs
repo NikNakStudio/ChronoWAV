@@ -24,6 +24,7 @@ public class LevelController : MonoBehaviour {
     private float timeCounter = 0;
     private bool animate = true;
     private bool needToFixY = false;
+    private AudioSource dimensionSource;
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +42,7 @@ public class LevelController : MonoBehaviour {
 
         headerWaveObject.SetActive(false);
         tailWaveObject.SetActive(false);
+        dimensionSource = GameObject.Find("DimensionSource").GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -141,6 +143,8 @@ public class LevelController : MonoBehaviour {
 
         if (currentDimension != nextDimension)
         {
+            Debug.Log(dimensionSource);
+            dimensionSource.Play();
             MapDimension(nextDimension);
             needToFixY = true;
             cameraComponent.backgroundColor = nextDimension.backgroundColor;

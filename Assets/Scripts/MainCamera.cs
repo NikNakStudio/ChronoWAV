@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour {
 
-	public WavePlotter plotter;
+	public LevelController levelController;
 	// Use this for initialization
 	void Start () {
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		var headerPosition = plotter.GetWaveHeader().transform.position;
-		transform.position =  new Vector3(headerPosition.x - 10, 0, -10);
+        var headerPosition = levelController.GetWaveHeader().transform.position;
+		transform.position =  new Vector3(headerPosition.x + 5, 0, -10);
 	}
 }

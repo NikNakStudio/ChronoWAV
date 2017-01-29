@@ -35,13 +35,14 @@ public class LevelController : MonoBehaviour {
 
 		plotPoints = new GameObject[numberOfPoints]; //creat an array of 100 points.
 
-		for (int i = 0; i < numberOfPoints; i++)
+		for (int i = 0; i < numberOfPoints - 1; i++)
 		{
-            GameObject gameObject = i != numberOfPoints - 1 ? tailWaveObject : headerWaveObject;
-			plotPoints[i] = (GameObject)GameObject.Instantiate(gameObject, new Vector3(i - (numberOfPoints), 0, 0), Quaternion.identity); //this specifies what object to create, where to place it and how to orient it
+           
+            plotPoints[i] = (GameObject)GameObject.Instantiate(tailWaveObject, new Vector3(i - (numberOfPoints), 0, 0), Quaternion.identity); //this specifies what object to create, where to place it and how to orient it
 		}
 
-        headerWaveObject.SetActive(false);
+        plotPoints[numberOfPoints - 1] = headerWaveObject;
+
         tailWaveObject.SetActive(false);
         dimensionSource = GameObject.Find("DimensionSource").GetComponent<AudioSource>();
 		end = GameObject.Find ("End").GetComponent<ReachEnd> ();

@@ -24,8 +24,8 @@ public class GetDeaf : MonoBehaviour {
     }
 
 
-    void OnTriggerEnter(Collider other){
-        if (other.GetType() == typeof(BoxCollider))
+    void OnTriggerEnter2D(Collider2D other){
+        if (other.GetType() == typeof(BoxCollider2D))
             Mute();
     }
 

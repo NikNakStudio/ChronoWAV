@@ -16,7 +16,7 @@ public class ReachEnd : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter(Collider other){
+	void OnTriggerEnter2D(Collider2D other){
 		Ended = true;
 		//if (other.GetType () == typeof(CapsuleCollider))
 	}

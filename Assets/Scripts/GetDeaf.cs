@@ -5,6 +5,7 @@ using UnityEngine;
 public class GetDeaf : MonoBehaviour {
 
     public bool isDeaf;
+    public bool isDeafOnCollide = true;
     public float deafnessDuration = 2f;
     private float remainingDeafnessTime = 0;
     private AudioSource audioSource;
@@ -14,12 +15,13 @@ public class GetDeaf : MonoBehaviour {
 	void Start () {
         audioSource = GameObject.Find("MainSource").GetComponent<AudioSource>();
 		wrongSource = GameObject.Find("WrongSource").GetComponent<AudioSource>();
+        UnMute();
 	}
 	
 	// Update is called once per frame
     void Update(){
         remainingDeafnessTime -= Time.deltaTime;
-        if (remainingDeafnessTime <= 0)
+        if (!isDeafOnCollide && remainingDeafnessTime <= 0)
             UnMute();
     }
 
@@ -29,10 +31,10 @@ public class GetDeaf : MonoBehaviour {
             Mute();
     }
 
-    /*void OnTriggerExit(Collider other){
-        if (other.GetType() == typeof(BoxCollider))
+    void OnTriggerExit2D(Collider2D other){
+        if (other.GetType() == typeof(BoxCollider2D))
             UnMute();
-    }*/
+    }
 
     void Mute(){
         isDeaf = true;

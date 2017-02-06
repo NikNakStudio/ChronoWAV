@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
+using System.Collections; 
 
 public class LevelController : MonoBehaviour {
 
     public DimensionController dimensionController;
     public GameObject mainCamera;
+    public GameObject UICanvas;
     public float verticalLimit;
     public float secondsToRegenerate = 2;
 
@@ -33,12 +35,12 @@ public class LevelController : MonoBehaviour {
         currentDimension = dimensionController.GetCurrentDimension();
         MapDimension(currentDimension);
 
-		plotPoints = new GameObject[numberOfPoints]; //creat an array of 100 points.
+		plotPoints = new GameObject[numberOfPoints]; 
 
 		for (int i = 0; i < numberOfPoints - 1; i++)
 		{
            
-            plotPoints[i] = (GameObject)GameObject.Instantiate(tailWaveObject, new Vector3(i - (numberOfPoints), 0, 0), Quaternion.identity); //this specifies what object to create, where to place it and how to orient it
+            plotPoints[i] = (GameObject) GameObject.Instantiate(tailWaveObject, new Vector3(i - (numberOfPoints), 0, 0), Quaternion.identity); //this specifies what object to create, where to place it and how to orient it
 		}
 
         plotPoints[numberOfPoints - 1] = headerWaveObject;
@@ -46,48 +48,43 @@ public class LevelController : MonoBehaviour {
         tailWaveObject.SetActive(false);
         dimensionSource = GameObject.Find("DimensionSource").GetComponent<AudioSource>();
 		end = GameObject.Find ("End").GetComponent<ReachEnd> ();
+        UICanvas.SetActive(false);
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-        int blockedPoints = 0;
-        /*if (timeCounter < secondsToRegenerate)
+        if (end.TimeSinceEnd >= 5)
         {
-            timeCounter += Time.deltaTime;
-            blockedPoints = (int)(numberOfPoints - (numberOfPoints * timeCounter / secondsToRegenerate));
-            Debug.Log("timeCounter: " + timeCounter);
-            Debug.Log("Puntos bloqueados: " + blockedPoints);
-        }*/
+            DisplayUI();
+            if (Input.GetKeyDown(KeyCode.Space))
+                Application.LoadLevel ("Credits");
+        }
 
-		if (end.Ended) {
-			Application.LoadLevel ("Credits");
-		}
-
-        CheckInput();
+		if (end.Ended) 
+            mainCamera.GetComponent<MainCamera>().Stop();
+        else
+            CheckInput();
 
 		for (int i = 0; i < numberOfPoints; i++)
 		{
-            var isBlocked = i < blockedPoints;
+            var isBlocked = false;
             var position = CalculateNextPosition(i, isBlocked);
             plotPoints[i].transform.position = position;
 
 		}
 	}
-
+        
     private void CheckInput(){
         if (Input.anyKey)
         {
-            if(Input.GetKeyDown(KeyCode.Escape)){
+            if(Input.GetKeyDown(KeyCode.Escape))
                 Application.LoadLevel("Title");
-            }
             else
                 ChangeDimension(DimensionController.dimensions.red);
         }
         else
-        {
             ChangeDimension(DimensionController.dimensions.blue);
-        }
     }
 
     private Vector2 CalculateNextPosition(int pointIndex, bool isBlocked){
@@ -163,5 +160,12 @@ public class LevelController : MonoBehaviour {
         var header = GetWaveHeader();
         var source = header.GetComponent<AudioSource>();
         source.volume = 0;
+    }
+
+    private void DisplayUI(){
+        UICanvas.SetActive(true);
+        var timeWithoutMusicText = GameObject.Find("TimeWithoutMusic").GetComponent<Text>();
+        float time = GetWaveHeader().GetComponent<GetDeaf>().GetTotalDeafnessTime();
+        timeWithoutMusicText.text = "Time without music: " + time.ToString("N2") + "s";
     }
 }

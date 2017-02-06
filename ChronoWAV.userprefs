@@ -7,8 +7,8 @@
       <File FileName="Assets\Scripts\DimensionController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Dimension.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\TitleController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Beat.cs" Line="35" Column="23" />
-      <File FileName="Assets\Scripts\GetDeaf.cs" Line="33" Column="5" />
+      <File FileName="Assets\Scripts\Beat.cs" Line="37" Column="21" />
+      <File FileName="Assets\Scripts\GetDeaf.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ReachEnd.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CreditsController.cs" Line="1" Column="1" />
     </Files>

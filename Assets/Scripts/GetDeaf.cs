@@ -8,6 +8,7 @@ public class GetDeaf : MonoBehaviour {
     public bool isDeafOnCollide = true;
     public float deafnessDuration = 2f;
     private float remainingDeafnessTime = 0;
+    public float totalDeafnessTime = 0f;
     private AudioSource audioSource;
 	private AudioSource wrongSource;
 
@@ -19,34 +20,41 @@ public class GetDeaf : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-    void Update(){
+    private void Update(){
+        if (isDeaf)
+            totalDeafnessTime += Time.deltaTime;
+        
         remainingDeafnessTime -= Time.deltaTime;
         if (!isDeafOnCollide && remainingDeafnessTime <= 0)
             UnMute();
     }
 
 
-    void OnTriggerEnter2D(Collider2D other){
+    private void OnTriggerEnter2D(Collider2D other){
         if (other.GetType() == typeof(BoxCollider2D))
             Mute();
     }
 
-    void OnTriggerExit2D(Collider2D other){
+    private void OnTriggerExit2D(Collider2D other){
         if (other.GetType() == typeof(BoxCollider2D))
             UnMute();
     }
 
-    void Mute(){
+    private void Mute(){
         isDeaf = true;
         remainingDeafnessTime = deafnessDuration;
         audioSource.volume = 0;
 		wrongSource.volume = 0.2f;
     }
 
-    void UnMute(){
+    private void UnMute(){
         isDeaf = false;
         remainingDeafnessTime = 0;
         audioSource.volume = 1;
 		wrongSource.volume = 0;
+    }
+
+    public float GetTotalDeafnessTime(){
+        return totalDeafnessTime;
     }
 }
